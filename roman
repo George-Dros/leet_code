@@ -1,0 +1,33 @@
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        
+        total_value = 0
+        prev = 0
+        
+        dict = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000
+
+        }
+
+        for symbol in reversed(s):
+            cur = dict[symbol]
+
+            if cur < prev:
+                total_value -= cur
+
+            else:
+                total_value += cur
+
+            prev = cur    
+
+        return total_value                  
